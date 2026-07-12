@@ -33,15 +33,6 @@
 \begin{multicols*}{4}
 
 \sect{Các phân phối thông dụng}
-\subsect{Đều rời rạc}
-\[
- \begin{aligned}
- P(X=x_i)&=\frac1N,\quad i=1,\ldots,N,\\
- \mathrm E(X)&=\frac1N\sum_{i=1}^{N}x_i,\\
- \mathrm{Var}(X)&=\frac1N\sum_{i=1}^{N}[x_i-\mathrm E(X)]^2.
- \end{aligned}
-\]
-
 \subsect{Nhị thức $B(n,p)$, $p=K/N$}
 \[
  \begin{aligned}
@@ -58,6 +49,24 @@
 \[
  P(X=k)=e^{-\mu}\frac{\mu^k}{k!},\quad k=0,1,\ldots;\qquad
  \mathrm E(X)=\mu,\quad \mathrm{Var}(X)=\mu.
+\]
+
+\subsect{Đều rời rạc}
+\[
+ \begin{aligned}
+ P(X=x_i)&=\frac1N,\quad i=1,\ldots,N,\\
+ \mathrm E(X)&=\frac1N\sum_{i=1}^{N}x_i,\\
+ \mathrm{Var}(X)&=\frac1N\sum_{i=1}^{N}[x_i-\mathrm E(X)]^2.
+ \end{aligned}
+\]
+
+\subsect{Chuẩn $N(\mu,\sigma^2)$}
+\[
+ \begin{aligned}
+ f_X(x)&=\frac1{\sigma\sqrt{2\pi}}
+ \exp\!\left[-\frac{(x-\mu)^2}{2\sigma^2}\right],\quad x\in\mathrm R,\\
+ \mathrm E(X)&=\mu,\qquad \mathrm{Var}(X)=\sigma^2.
+ \end{aligned}
 \]
 
 \subsect{Đều liên tục $U(a,b)$}
@@ -84,14 +93,15 @@
  \end{aligned}
 \]
 
-\subsect{Chuẩn $N(\mu,\sigma^2)$}
+\subsect{Hàm Gamma $\Gamma(\alpha)$}
 \[
- \begin{aligned}
- f_X(x)&=\frac1{\sigma\sqrt{2\pi}}
- \exp\!\left[-\frac{(x-\mu)^2}{2\sigma^2}\right],\quad x\in\mathrm R,\\
- \mathrm E(X)&=\mu,\qquad \mathrm{Var}(X)=\sigma^2.
- \end{aligned}
+ \Gamma(\alpha) = \int_0^\infty x^{\alpha-1} e^{-x} \, dx.
 \]
+Công thức tính nhanh bài tập:
+* $\Gamma(\alpha+1) = \alpha\Gamma(\alpha)$
+* Với $n$ nguyên dương: $\Gamma(n) = (n-1)!$
+* Giá trị đặc biệt: $\Gamma\left(\frac12\right) = \sqrt{\pi}$
+* Ví dụ: $\Gamma\left(\frac32\right) = \frac12\sqrt{\pi}$, $\Gamma\left(\frac52\right) = \frac32 \cdot \frac12\sqrt{\pi}$
 
 \subsect{Chi bình phương $\chi^2(n)$}
 \[
