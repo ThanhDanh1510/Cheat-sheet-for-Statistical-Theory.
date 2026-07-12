@@ -1,7 +1,7 @@
 % !TEX program = xelatex
 \documentclass[a4paper,landscape]{article}
 \usepackage[margin=5mm]{geometry}
-\usepackage{xcolor,array,tabularx,booktabs,multicol,amsmath}
+\usepackage{xcolor,array,tabularx,booktabs,multicol,amsmath,lmodern}
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
@@ -10,10 +10,6 @@
 \setlength{\tabcolsep}{2pt}
 \setlength{\arrayrulewidth}{0.3pt}
 \renewcommand{\arraystretch}{0.86}
-\setlength{\abovedisplayskip}{0.25pt}
-\setlength{\belowdisplayskip}{0.25pt}
-\setlength{\abovedisplayshortskip}{0.15pt}
-\setlength{\belowdisplayshortskip}{0.15pt}
 \setlength{\jot}{0.2pt}
 
 \newcommand{\sect}[1]{%
@@ -21,7 +17,7 @@
   \colorbox{black!10}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\bfseries #1}}%
   \vspace{0.2pt}\par}
 \newcommand{\subsect}[1]{\vspace{0.2pt}\textbf{#1}\par}
-\newcommand{\tighttable}[1]{\vspace{0.3pt}\begin{center}#1\end{center}\vspace{-2pt}}
+\newcommand{\tighttable}[1]{\vspace{0.1pt}{\centering #1\par}\vspace{0.1pt}}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \newcommand{\twosidedrow}[4]{%
@@ -30,6 +26,10 @@
 
 \begin{document}
 \fontsize{4.60}{4.90}\selectfont
+\setlength{\abovedisplayskip}{0.25pt}
+\setlength{\belowdisplayskip}{0.25pt}
+\setlength{\abovedisplayshortskip}{0.15pt}
+\setlength{\belowdisplayshortskip}{0.15pt}
 \begin{multicols*}{4}
 
 \sect{Các phân phối thông dụng}
@@ -42,7 +42,7 @@
  \end{aligned}
 \]
 
-\subsect{Có hoàn lại: nhị thức $B(n,p)$, $p=K/N$}
+\subsect{Nhị thức $B(n,p)$, $p=K/N$}
 \[
  \begin{aligned}
  P(X=k)&=\binom nk p^k(1-p)^{n-k},\quad k=0,1,\ldots,n,\\
@@ -54,19 +54,34 @@
  \quad(n\geq50,\ np\geq5,\ n(1-p)\geq5).
 \]
 
-\subsect{Không hoàn lại: siêu bội $HG(N,K,n)$, $p=K/N$}
-\[
- \begin{aligned}
- P(X=k)&=\frac{\binom Kk\binom{N-K}{n-k}}{\binom Nn},\\
- \mathrm E(X)&=np,\qquad
- \mathrm{Var}(X)=np(1-p)\frac{N-n}{N-1}.
- \end{aligned}
-\]
-
 \subsect{Poisson $P(\mu)$}
 \[
  P(X=k)=e^{-\mu}\frac{\mu^k}{k!},\quad k=0,1,\ldots;\qquad
  \mathrm E(X)=\mu,\quad \mathrm{Var}(X)=\mu.
+\]
+
+\subsect{Đều liên tục $U(a,b)$}
+\[
+ \begin{aligned}
+ f_X(x)&=\frac1{b-a},\quad x\in[a,b],\\
+ \mathrm E(X)&=\frac{a+b}2,\qquad \mathrm{Var}(X)=\frac{(b-a)^2}{12}.
+ \end{aligned}
+\]
+
+\subsect{Mũ $\text{Exp}(\lambda)$}
+\[
+ \begin{aligned}
+ f_X(x)&=\lambda e^{-\lambda x},\quad x\ge0,\\
+ \mathrm E(X)&=\frac1\lambda,\qquad \mathrm{Var}(X)=\frac1{\lambda^2}.
+ \end{aligned}
+\]
+
+\subsect{Gamma $\Gamma(\alpha,\beta)$}
+\[
+ \begin{aligned}
+ f_X(x)&=\frac{\beta^\alpha}{\Gamma(\alpha)} x^{\alpha-1} e^{-\beta x},\quad x>0,\\
+ \mathrm E(X)&=\frac\alpha\beta,\qquad \mathrm{Var}(X)=\frac\alpha{\beta^2}.
+ \end{aligned}
 \]
 
 \subsect{Chuẩn $N(\mu,\sigma^2)$}
@@ -109,17 +124,9 @@
  \mathrm{Var}(Z)=\frac{2n^2(m+n-2)}{m(n-2)^2(n-4)}\ (n>4).
 \]
 
-\subsect{Đa thức}
-\[
- \begin{gathered}
- P(X_1=x_1,\ldots,X_k=x_k)
- =\frac{n!}{x_1!\cdots x_k!}p_1^{x_1}\cdots p_k^{x_k},\\
- \sum_{i=1}^{k}x_i=n,\qquad p_k=1-\sum_{i=1}^{k-1}p_i,\\
- \mathrm E(X_i)=np_i,\qquad \mathrm{Var}(X_i)=np_i(1-p_i).
- \end{gathered}
-\]
 
 \sect{Phân phối mẫu của trung bình và phương sai}
+\textbf{Khi mẫu từ PP chuẩn $X\sim N(\mu,\sigma^2)$:}
 \[
  \overline X\perp S^2,\qquad
  \overline X\sim N\!\left(\mu,\frac{\sigma^2}{n}\right),\qquad
@@ -128,12 +135,8 @@
 \[
  \frac{\overline X-\mu}{S/\sqrt n}\sim T(n-1).
 \]
+\textbf{Khi mẫu bất kỳ, mẫu lớn $n\geq30$ (theo CLT):}
 \[
- Y_n=\sqrt n\,\frac{\overline X-\mu}{\sigma}
- =\frac{\overline X-\mu}{\sigma/\sqrt n}\approx N(0,1).
-\]
-\[
- n\geq30:\qquad
  \frac{\overline X-\mu}{\sigma/\sqrt n}\approx N(0,1),\qquad
  \frac{\overline X-\mu}{S/\sqrt n}\approx N(0,1).
 \]
@@ -178,25 +181,25 @@ MSE cho phép ta chọn $\hat\theta$ nếu, với cỡ mẫu $n$,
 \]
 \textbf{Hàm hợp lý:}
 \[
- \begin{aligned}
- L(\theta)&=L(\theta\mid X)
- =L(\theta_1,\ldots,\theta_n\mid X_1,\ldots,X_n)\\
- &=\prod_{i=1}^{n}f(X_i\mid\theta_1,\ldots,\theta_n).
- \end{aligned}
+ L(\theta) = L(\theta \mid X_1, \ldots, X_n) = \prod_{i=1}^{n}f(X_i\mid\theta).
 \]
 
 \sect{2. Khoảng tin cậy}
-\textbf{Sai số ước lượng:}
+\textbf{Sai số ước lượng $\epsilon$:}
 \[
  \epsilon=
  \begin{cases}
- z_{1-\alpha/2}\dfrac{\sigma}{\sqrt n},\\[1pt]
- z_{1-\alpha/2}\dfrac{s}{\sqrt n},\\[1pt]
- t^{n-1}_{1-\alpha/2}\dfrac{s}{\sqrt n},
+ z_{1-\alpha/2}\dfrac{\sigma}{\sqrt n} & \text{(biết $\sigma$)}\\[1.5pt]
+ z_{1-\alpha/2}\dfrac{s}{\sqrt n} & \text{($n\geq30$, chưa biết $\sigma$)}\\[1.5pt]
+ t^{n-1}_{1-\alpha/2}\dfrac{s}{\sqrt n} & \text{($n<30$, chuẩn, chưa biết $\sigma$)}
  \end{cases}
- \qquad
- \epsilon=z_{1-\alpha/2}\sqrt{\dfrac{\hat p(1-\hat p)}{n}}.
 \]
+\[
+ \epsilon=z_{1-\alpha/2}\sqrt{\frac{\hat p(1-\hat p)}{n}} \quad\text{(tỷ lệ)}.
+\]
+\textbf{KTC 2 phía:} $(\overline X-\epsilon, \overline X+\epsilon)$ hoặc $(\hat p-\epsilon, \hat p+\epsilon)$.\\
+\textbf{KTC tối đa (chỉ có chặn trên):} $(-\infty, \overline X+\epsilon_{1-\alpha})$ với $\epsilon_{1-\alpha}$ dùng $z_{1-\alpha}$ hoặc $t_{1-\alpha}$.\\
+\textbf{KTC tối thiểu (chỉ có chặn dưới):} $(\overline X-\epsilon_{1-\alpha}, +\infty)$.
 
 \sect{3. Kiểm định giả thuyết}
 \textbf{Hàm năng lực:}
@@ -232,11 +235,14 @@ $\begin{gathered}H_0:\mu=\mu_0\\H_1:\mu>\mu_0\end{gathered}$
 \[
  T_0=\frac{\overline X-\mu_0}{S/\sqrt n}.
 \]
-\tighttable{\begin{tabularx}{\linewidth}{|Y|}\hline
-\textbf{Miền bác bỏ}\\\hline
-$C=\{x:|t_0|>t_{1-\alpha/2}(n-1)\}$\\\hline
-$C=\{x:t_0<-t_{1-\alpha}(n-1)\}$\\\hline
-$C=\{x:t_0>t_{1-\alpha}(n-1)\}$\\\hline
+\tighttable{\begin{tabularx}{\linewidth}{|Y|Y|}\hline
+\textbf{Giả thuyết}&\textbf{Miền bác bỏ}\\\hline
+$\begin{gathered}H_0:\mu=\mu_0\\H_1:\mu\ne\mu_0\end{gathered}$
+&$C=\{x:|t_0|>t_{1-\alpha/2}(n-1)\}$\\\hline
+$\begin{gathered}H_0:\mu=\mu_0\\H_1:\mu<\mu_0\end{gathered}$
+&$C=\{x:t_0<-t_{1-\alpha}(n-1)\}$\\\hline
+$\begin{gathered}H_0:\mu=\mu_0\\H_1:\mu>\mu_0\end{gathered}$
+&$C=\{x:t_0>t_{1-\alpha}(n-1)\}$\\\hline
 \end{tabularx}}
 
 \subsect{Tỷ lệ}
@@ -256,7 +262,7 @@ $\begin{gathered}H_0:p=p_0\\H_1:p>p_0\end{gathered}$
 \sect{4. So sánh hai kỳ vọng}
 \subsect{Biết phương sai}
 \[
- Z_0=\frac{\overline X-\overline Y-(\mu_1-\mu_2)}
+ Z_0=\frac{\overline X-\overline Y-D_0}
  {\sqrt{\dfrac{\sigma_1^2}{n}+\dfrac{\sigma_2^2}{m}}}.
 \]
 \tighttable{\begin{tabularx}{\linewidth}{|Y|Y|}\hline
@@ -270,7 +276,7 @@ $\begin{gathered}H_0:p=p_0\\H_1:p>p_0\end{gathered}$
 \[
  S_p^2=\frac{(n-1)S_1^2+(m-1)S_2^2}{n+m-2},
  \qquad
- T_0=\frac{\overline X-\overline Y-(\mu_1-\mu_2)}
+ T_0=\frac{\overline X-\overline Y-D_0}
  {S_p\sqrt{\dfrac1n+\dfrac1m}}.
 \]
 \tighttable{\begin{tabularx}{\linewidth}{|Y|Y|}\hline
@@ -282,7 +288,7 @@ $\begin{gathered}H_0:p=p_0\\H_1:p>p_0\end{gathered}$
 
 \subsect{$\sigma_1^2\ne\sigma_2^2$}
 \[
- T_0=\frac{\overline X-\overline Y-(\mu_1-\mu_2)}
+ T_0=\frac{\overline X-\overline Y-D_0}
  {\sqrt{\dfrac{S_1^2}{n}+\dfrac{S_2^2}{m}}},
 \]
 \[
@@ -412,6 +418,11 @@ Tra bảng tương tự trường hợp các $\sigma^2$ bằng nhau.
  =\frac{\sum_{i=1}^{n}(x_i-\bar x)(y_i-\bar y)}
  {\sqrt{\sum_{i=1}^{n}(x_i-\bar x)^2\sum_{i=1}^{n}(y_i-\bar y)^2}}.
 \]
+\textbf{Kiểm định hệ số tương quan ($H_0:\rho_{XY}=0$):}
+\[
+ T_0=\frac{r_{xy}\sqrt{n-2}}{\sqrt{1-r_{xy}^2}}\sim T(n-2).
+\]
+Bác bỏ $H_0$ nếu $|t_0|>t^{n-2}_{1-\alpha/2}$ (với $H_1:\rho_{XY}\ne 0$).
 
 \end{multicols*}
 \end{document}
