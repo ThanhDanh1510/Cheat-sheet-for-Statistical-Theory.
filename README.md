@@ -11,7 +11,8 @@ This repository contains LaTeX sources and compiled PDFs for statistical theory 
 
 You can use the LaTeX file to modify or add formulas, or download the PDF directly for reference.
 
-## Đóng góp (Acknowledgements)
+## Acknowledgements
 
-Đặc biệt cảm ơn bạn tôi, [sanghoang1209](https://github.com/sanghoang1209), đã đóng góp lớn cho nội dung kiến thức của cheatsheet này.
+A huge thanks to my friend [sanghoang1209](https://github.com/sanghoang1209) for contributing significantly to the content and knowledge base of this cheat sheet.
+
 
