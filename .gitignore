@@ -1,0 +1,10 @@
+# Ignore all files by default
+*
+
+# Allow gitignore and README
+!.gitignore
+!README.md
+
+# Allow LaTeX source files and PDF outputs
+!*.tex
+!*.pdf

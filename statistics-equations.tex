@@ -1,0 +1,426 @@
+% !TEX program = xelatex
+\documentclass[a4paper,landscape]{article}
+\usepackage[margin=5mm]{geometry}
+\usepackage{xcolor,array,tabularx,booktabs,multicol,amsmath}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\columnsep}{3mm}
+\setlength{\columnseprule}{0.25pt}
+\setlength{\tabcolsep}{2pt}
+\setlength{\arrayrulewidth}{0.3pt}
+\renewcommand{\arraystretch}{0.86}
+\setlength{\abovedisplayskip}{0.25pt}
+\setlength{\belowdisplayskip}{0.25pt}
+\setlength{\abovedisplayshortskip}{0.15pt}
+\setlength{\belowdisplayshortskip}{0.15pt}
+\setlength{\jot}{0.2pt}
+
+\newcommand{\sect}[1]{%
+  \vspace{0.7pt}\noindent
+  \colorbox{black!10}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\bfseries #1}}%
+  \vspace{0.2pt}\par}
+\newcommand{\subsect}[1]{\vspace{0.2pt}\textbf{#1}\par}
+\newcommand{\tighttable}[1]{\vspace{0.3pt}\begin{center}#1\end{center}\vspace{-2pt}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcommand{\twosidedrow}[4]{%
+  $\begin{gathered}H_0:#1\\H_1:#2\end{gathered}$ & $#3$ & $#4$ \\ \hline}
+\newcommand{\altrow}[2]{$H_1:#1$ & $#2$ \\ \hline}
+
+\begin{document}
+\fontsize{4.60}{4.90}\selectfont
+\begin{multicols*}{4}
+
+\sect{Các phân phối thông dụng}
+\subsect{Đều rời rạc}
+\[
+ \begin{aligned}
+ P(X=x_i)&=\frac1N,\quad i=1,\ldots,N,\\
+ \mathrm E(X)&=\frac1N\sum_{i=1}^{N}x_i,\\
+ \mathrm{Var}(X)&=\frac1N\sum_{i=1}^{N}[x_i-\mathrm E(X)]^2.
+ \end{aligned}
+\]
+
+\subsect{Có hoàn lại: nhị thức $B(n,p)$, $p=K/N$}
+\[
+ \begin{aligned}
+ P(X=k)&=\binom nk p^k(1-p)^{n-k},\quad k=0,1,\ldots,n,\\
+ \mathrm E(X)&=np,\qquad \mathrm{Var}(X)=np(1-p).
+ \end{aligned}
+\]
+\[
+ B(n,p)\approx N\bigl(np,np(1-p)\bigr)
+ \quad(n\geq50,\ np\geq5,\ n(1-p)\geq5).
+\]
+
+\subsect{Không hoàn lại: siêu bội $HG(N,K,n)$, $p=K/N$}
+\[
+ \begin{aligned}
+ P(X=k)&=\frac{\binom Kk\binom{N-K}{n-k}}{\binom Nn},\\
+ \mathrm E(X)&=np,\qquad
+ \mathrm{Var}(X)=np(1-p)\frac{N-n}{N-1}.
+ \end{aligned}
+\]
+
+\subsect{Poisson $P(\mu)$}
+\[
+ P(X=k)=e^{-\mu}\frac{\mu^k}{k!},\quad k=0,1,\ldots;\qquad
+ \mathrm E(X)=\mu,\quad \mathrm{Var}(X)=\mu.
+\]
+
+\subsect{Chuẩn $N(\mu,\sigma^2)$}
+\[
+ \begin{aligned}
+ f_X(x)&=\frac1{\sigma\sqrt{2\pi}}
+ \exp\!\left[-\frac{(x-\mu)^2}{2\sigma^2}\right],\quad x\in\mathrm R,\\
+ \mathrm E(X)&=\mu,\qquad \mathrm{Var}(X)=\sigma^2.
+ \end{aligned}
+\]
+
+\subsect{Chi bình phương $\chi^2(n)$}
+\[
+ \begin{aligned}
+ f_Z(z)&=\frac{z^{n/2-1}e^{-z/2}}{2^{n/2}\Gamma(n/2)},\quad z\geq0,\\
+ \mathrm E(Z)&=n,\qquad \mathrm{Var}(Z)=2n.
+ \end{aligned}
+\]
+
+\subsect{Student $St(n)$}
+\[
+ f_Z(z)=\frac{\Gamma\!\left(\frac{n+1}{2}\right)}
+ {\sqrt{n\pi}\,\Gamma\!\left(\frac n2\right)}
+ \left(1+\frac{z^2}{n}\right)^{-\frac{n+1}{2}},\quad z\in\mathrm R;
+\]
+\[
+ \mathrm E(Z)=0\ (n>1),\qquad
+ \mathrm{Var}(Z)=\frac n{n-2}\ (n>2).
+\]
+
+\subsect{Fisher $F(m,n)$}
+\[
+ f_Z(z)=\frac{\Gamma\!\left(\frac{m+n}{2}\right)
+ \left(\frac mn\right)^{m/2}z^{m/2-1}}
+ {\Gamma\!\left(\frac m2\right)\Gamma\!\left(\frac n2\right)
+ \left(1+\frac mn z\right)^{(m+n)/2}},\quad z>0;
+\]
+\[
+ \mathrm E(Z)=\frac n{n-2}\ (n>2),\qquad
+ \mathrm{Var}(Z)=\frac{2n^2(m+n-2)}{m(n-2)^2(n-4)}\ (n>4).
+\]
+
+\subsect{Đa thức}
+\[
+ \begin{gathered}
+ P(X_1=x_1,\ldots,X_k=x_k)
+ =\frac{n!}{x_1!\cdots x_k!}p_1^{x_1}\cdots p_k^{x_k},\\
+ \sum_{i=1}^{k}x_i=n,\qquad p_k=1-\sum_{i=1}^{k-1}p_i,\\
+ \mathrm E(X_i)=np_i,\qquad \mathrm{Var}(X_i)=np_i(1-p_i).
+ \end{gathered}
+\]
+
+\sect{Phân phối mẫu của trung bình và phương sai}
+\[
+ \overline X\perp S^2,\qquad
+ \overline X\sim N\!\left(\mu,\frac{\sigma^2}{n}\right),\qquad
+ \frac{(n-1)S^2}{\sigma^2}\sim\chi^2(n-1),
+\]
+\[
+ \frac{\overline X-\mu}{S/\sqrt n}\sim T(n-1).
+\]
+\[
+ Y_n=\sqrt n\,\frac{\overline X-\mu}{\sigma}
+ =\frac{\overline X-\mu}{\sigma/\sqrt n}\approx N(0,1).
+\]
+\[
+ n\geq30:\qquad
+ \frac{\overline X-\mu}{\sigma/\sqrt n}\approx N(0,1),\qquad
+ \frac{\overline X-\mu}{S/\sqrt n}\approx N(0,1).
+\]
+
+\sect{1. Ước lượng và tính chất ước lượng}
+\textbf{Ước lượng không chệch:} $\mathrm E(\hat\theta)=\theta$.
+\quad\textbf{Độ chệch (Bias):}
+$B(\hat\theta)=\mathrm E(\hat\theta)-\theta$.
+\[
+ \mathrm{MSE}(\hat\theta)=\mathrm E[(\hat\theta-\theta)^2]
+ =\mathrm{Var}(\hat\theta)+\bigl(\mathrm{Bias}(\hat\theta)\bigr)^2.
+\]
+$\hat\theta_1$ hiệu quả hơn $\hat\theta_2$ nếu cả hai đều không chệch và
+$\mathrm{Var}(\hat\theta_1)<\mathrm{Var}(\hat\theta_2)$.
+
+\textbullet\ Cho trước hai ước lượng, $\hat\theta$ và $\tilde\theta$, tiêu chuẩn
+MSE cho phép ta chọn $\hat\theta$ nếu, với cỡ mẫu $n$,
+\[
+ \mathrm{MSE}(\hat\theta)<\mathrm{MSE}(\tilde\theta),
+\]
+\textbullet\ hoặc
+\[
+ \mathrm{Var}(\tilde\theta)-\mathrm{Var}(\hat\theta)>
+ \bigl(\mathrm{Bias}(\hat\theta)\bigr)^2-
+ \bigl(\mathrm{Bias}(\tilde\theta)\bigr)^2.
+\]
+
+\textbf{Ước lượng vững:}
+\[
+ \lim_{n\to\infty}P\bigl(|\hat\theta_n-\theta|>\epsilon\bigr)=0,
+ \qquad \forall\epsilon>0.
+\]
+\textbf{Mômen tổng thể và mômen mẫu:}
+\[
+ \mu'_j(\theta)=\mathrm E(X^j)=\int x^j f(x)\,dx,
+ \qquad m_j=\frac1n\sum_{i=1}^{n}X_i^j.
+\]
+\textbf{Định lý Chebyshev:}
+\[
+ P\bigl(|X-\mathrm E(X)|\geq\epsilon\bigr)
+ \leq\frac{\mathrm{Var}(X)}{\epsilon^2}.
+\]
+\textbf{Hàm hợp lý:}
+\[
+ \begin{aligned}
+ L(\theta)&=L(\theta\mid X)
+ =L(\theta_1,\ldots,\theta_n\mid X_1,\ldots,X_n)\\
+ &=\prod_{i=1}^{n}f(X_i\mid\theta_1,\ldots,\theta_n).
+ \end{aligned}
+\]
+
+\sect{2. Khoảng tin cậy}
+\textbf{Sai số ước lượng:}
+\[
+ \epsilon=
+ \begin{cases}
+ z_{1-\alpha/2}\dfrac{\sigma}{\sqrt n},\\[1pt]
+ z_{1-\alpha/2}\dfrac{s}{\sqrt n},\\[1pt]
+ t^{n-1}_{1-\alpha/2}\dfrac{s}{\sqrt n},
+ \end{cases}
+ \qquad
+ \epsilon=z_{1-\alpha/2}\sqrt{\dfrac{\hat p(1-\hat p)}{n}}.
+\]
+
+\sect{3. Kiểm định giả thuyết}
+\textbf{Hàm năng lực:}
+\[
+ \beta(\theta)=P(\text{Bác bỏ }H_0\mid\theta)
+ =P(\text{Thống kê kiểm định}\in C\mid\theta).
+\]
+\textbf{Năng lực tại $\theta_1$:} Giá trị hàm năng lực tại điểm cụ thể
+$\theta_1\in H_1$, ký hiệu $\beta(\theta_1)=1-\beta$
+($\beta$ là xác suất sai lầm loại II).
+
+\textbf{Mức ý nghĩa ($\alpha$):}
+\[
+ \alpha=\max_{\theta\in H_0}\beta(\theta)
+ =P(\text{Bác bỏ }H_0\mid H_0\text{ đúng}).
+\]
+
+\subsect{Kỳ vọng, trường hợp biết $\sigma^2$}
+\[
+ Z_0=\frac{\overline X-\mu_0}{\sigma/\sqrt n}.
+\]
+\tighttable{\begin{tabularx}{\linewidth}{|Y|Y|}\hline
+\textbf{Giả thuyết}&\textbf{Miền bác bỏ}\\\hline
+$\begin{gathered}H_0:\mu=\mu_0\\H_1:\mu\ne\mu_0\end{gathered}$
+&$C=\{x:|z_0|>z_{1-\alpha/2}\}$\\\hline
+$\begin{gathered}H_0:\mu=\mu_0\\H_1:\mu<\mu_0\end{gathered}$
+&$C=\{x:z_0<-z_{1-\alpha}\}$\\\hline
+$\begin{gathered}H_0:\mu=\mu_0\\H_1:\mu>\mu_0\end{gathered}$
+&$C=\{x:z_0>z_{1-\alpha}\}$\\\hline
+\end{tabularx}}
+
+\subsect{Kỳ vọng, trường hợp không biết $\sigma^2$, mẫu nhỏ}
+\[
+ T_0=\frac{\overline X-\mu_0}{S/\sqrt n}.
+\]
+\tighttable{\begin{tabularx}{\linewidth}{|Y|}\hline
+\textbf{Miền bác bỏ}\\\hline
+$C=\{x:|t_0|>t_{1-\alpha/2}(n-1)\}$\\\hline
+$C=\{x:t_0<-t_{1-\alpha}(n-1)\}$\\\hline
+$C=\{x:t_0>t_{1-\alpha}(n-1)\}$\\\hline
+\end{tabularx}}
+
+\subsect{Tỷ lệ}
+\[
+ Z_0=\frac{\hat p-p_0}{\sqrt{p_0(1-p_0)/n}}.
+\]
+\tighttable{\begin{tabularx}{\linewidth}{|Y|Y|}\hline
+\textbf{Giả thuyết}&\textbf{Miền bác bỏ}\\\hline
+$\begin{gathered}H_0:p=p_0\\H_1:p\ne p_0\end{gathered}$
+&$C=\{x:|z_0|>z_{1-\alpha/2}\}$\\\hline
+$\begin{gathered}H_0:p=p_0\\H_1:p<p_0\end{gathered}$
+&$C=\{x:z_0<-z_{1-\alpha}\}$\\\hline
+$\begin{gathered}H_0:p=p_0\\H_1:p>p_0\end{gathered}$
+&$C=\{x:z_0>z_{1-\alpha}\}$\\\hline
+\end{tabularx}}
+
+\sect{4. So sánh hai kỳ vọng}
+\subsect{Biết phương sai}
+\[
+ Z_0=\frac{\overline X-\overline Y-(\mu_1-\mu_2)}
+ {\sqrt{\dfrac{\sigma_1^2}{n}+\dfrac{\sigma_2^2}{m}}}.
+\]
+\tighttable{\begin{tabularx}{\linewidth}{|Y|Y|}\hline
+\textbf{Đối thuyết}&\textbf{Miền bác bỏ}\\\hline
+\altrow{\mu_1-\mu_2\ne D_0}{|z_0|>z_{1-\alpha/2}}
+\altrow{\mu_1-\mu_2<D_0}{z_0<-z_{1-\alpha}}
+\altrow{\mu_1-\mu_2>D_0}{z_0>z_{1-\alpha}}
+\end{tabularx}}
+
+\subsect{$\sigma_1^2=\sigma_2^2=\sigma^2$}
+\[
+ S_p^2=\frac{(n-1)S_1^2+(m-1)S_2^2}{n+m-2},
+ \qquad
+ T_0=\frac{\overline X-\overline Y-(\mu_1-\mu_2)}
+ {S_p\sqrt{\dfrac1n+\dfrac1m}}.
+\]
+\tighttable{\begin{tabularx}{\linewidth}{|Y|Y|}\hline
+\textbf{Đối thuyết}&\textbf{Miền bác bỏ}\\\hline
+\altrow{\mu_1-\mu_2\ne D_0}{|t_0|>t^{df}_{1-\alpha/2}}
+\altrow{\mu_1-\mu_2<D_0}{t_0<-t^{df}_{1-\alpha}}
+\altrow{\mu_1-\mu_2>D_0}{t_0>t^{df}_{1-\alpha}}
+\end{tabularx}}
+
+\subsect{$\sigma_1^2\ne\sigma_2^2$}
+\[
+ T_0=\frac{\overline X-\overline Y-(\mu_1-\mu_2)}
+ {\sqrt{\dfrac{S_1^2}{n}+\dfrac{S_2^2}{m}}},
+\]
+\[
+ df=\frac{\left[\left(\dfrac{s_1^2}{n}\right)+
+ \left(\dfrac{s_2^2}{m}\right)\right]^2}
+ {\dfrac{\left(\dfrac{s_1^2}{n}\right)^2}{n-1}+
+  \dfrac{\left(\dfrac{s_2^2}{m}\right)^2}{m-1}}.
+\]
+Tra bảng tương tự trường hợp các $\sigma^2$ bằng nhau.
+
+\sect{5. Hai mẫu phụ thuộc (nguồn: 2 mẫu không độc lập)}
+\[
+ D_i=X_{1i}-X_{2i},\qquad
+ \bar d=\frac1n\sum_{i=1}^{n}d_i,
+\]
+\[
+ s_d^2=\frac1{n-1}\sum_{i=1}^{n}(d_i-\bar d)^2
+ =\frac1{n-1}\sum_{i=1}^{n}d_i^2-\frac n{n-1}(\bar d)^2,
+\]
+\[
+ T_0=\frac{\overline D-D_0}{S_D/\sqrt n}.
+\]
+\tighttable{\begin{tabularx}{\linewidth}{|Y|Y|}\hline
+\textbf{Đối thuyết}&\textbf{Miền bác bỏ}\\\hline
+\altrow{\mu_D\ne D_0}{|t_0|>t^{n-1}_{1-\alpha/2}}
+\altrow{\mu_D<D_0}{t_0<-t^{n-1}_{1-\alpha}}
+\altrow{\mu_D>D_0}{t_0>t^{n-1}_{1-\alpha}}
+\end{tabularx}}
+
+\sect{6. So sánh hai tỷ lệ}
+\[
+ Z_0=\frac{\hat p_1-\hat p_2-D_0}
+ {\sqrt{\hat p(1-\hat p)\left(\dfrac1n+\dfrac1m\right)}},
+\]
+\[
+ \hat p_1=\frac Xn;\qquad \hat p_2=\frac Ym;\qquad
+ \hat p=\frac{X+Y}{n+m}.
+\]
+\tighttable{\begin{tabularx}{\linewidth}{|Y|Y|}\hline
+\textbf{Đối thuyết}&\textbf{Miền bác bỏ}\\\hline
+\altrow{p_1-p_2\ne D_0}{|z_0|>z_{1-\alpha/2}}
+\altrow{p_1-p_2<D_0}{z_0<-z_{1-\alpha}}
+\altrow{p_1-p_2>D_0}{z_0>z_{1-\alpha}}
+\end{tabularx}}
+
+\sect{7. Hồi quy tuyến tính}
+\[
+ \begin{aligned}
+ S_{xx}&=\sum_{i=1}^{n}(x_i-\bar x)^2
+       =\sum_{i=1}^{n}x_i^2-n\bar x^2,\\
+ S_{yy}&=\sum_{i=1}^{n}(y_i-\bar y)^2
+       =\sum_{i=1}^{n}y_i^2-n\bar y^2,\\
+ S_{xy}=S_{yx}&=\sum_{i=1}^{n}(x_i-\bar x)(y_i-\bar y)
+       =\sum_{i=1}^{n}x_iy_i-n\bar x\bar y.
+ \end{aligned}
+\]
+\[
+ \begin{aligned}
+ SST&=S_{yy}=\sum_{i=1}^{n}(y_i-\bar y)^2,\\
+ SSR&=\hat\beta_1^2S_{xx}=\frac{S_{xy}^2}{S_{xx}},\\
+ SSE&=SST-SSR=\sum_{i=1}^{n}(y_i-\hat y_i)^2,\\
+ R^2&=\frac{SSR}{SST}=1-\frac{SSE}{SST},\\
+ MSE&=\sigma_{est}^2=\frac{SSE}{n-2}.
+ \end{aligned}
+\]
+\[
+ \hat\beta_1=\frac{S_{xy}}{S_{xx}},
+ \qquad \hat\beta_0=\bar y-\hat\beta_1\bar x.
+\]
+
+\subsect{Khoảng tin cậy}
+\[
+ \left(
+ \hat\beta_1-t^{n-2}_{1-\alpha/2}\sqrt{\frac{MSE}{S_{xx}}} ;\
+ \hat\beta_1+t^{n-2}_{1-\alpha/2}\sqrt{\frac{MSE}{S_{xx}}}
+ \right),
+\]
+\[
+ \left(
+ \begin{gathered}
+ \hat\beta_0-t^{n-2}_{1-\alpha/2}
+ \sqrt{MSE\left(\frac1n+\frac{\bar x^2}{S_{xx}}\right)}\,;\\
+ \hat\beta_0+t^{n-2}_{1-\alpha/2}
+ \sqrt{MSE\left(\frac1n+\frac{\bar x^2}{S_{xx}}\right)}
+ \end{gathered}
+ \right).
+\]
+
+\subsect{Kiểm định $\beta_0$}
+\[
+ t_{\beta_0}=\frac{\hat\beta_0-b_0}
+ {\sqrt{MSE\left(\dfrac1n+\dfrac{\bar x^2}{S_{xx}}\right)}}.
+\]
+\tighttable{\begin{tabularx}{\linewidth}{|Y|Y|}\hline
+\textbf{Đối thuyết}&\textbf{Miền bác bỏ}\\\hline
+\altrow{\beta_0\ne b_0}{|t_{\beta_0}|>t^{n-2}_{1-\alpha/2}}
+\altrow{\beta_0<b_0}{t_{\beta_0}<-t^{n-2}_{1-\alpha}}
+\altrow{\beta_0>b_0}{t_{\beta_0}>t^{n-2}_{1-\alpha}}
+\end{tabularx}}
+
+\subsect{Kiểm định $\beta_1$}
+\[
+ t_{\beta_1}=\frac{\hat\beta_1-b_1}{\sqrt{MSE/S_{xx}}}.
+\]
+\tighttable{\begin{tabularx}{\linewidth}{|Y|Y|}\hline
+\textbf{Đối thuyết}&\textbf{Miền bác bỏ}\\\hline
+\altrow{\beta_1\ne b_1}{|t_{\beta_1}|>t^{n-2}_{1-\alpha/2}}
+\altrow{\beta_1<b_1}{t_{\beta_1}<-t^{n-2}_{1-\alpha}}
+\altrow{\beta_1>b_1}{t_{\beta_1}>t^{n-2}_{1-\alpha}}
+\end{tabularx}}
+
+\sect{8. Hiệp phương sai và tương quan}
+\[
+ \begin{aligned}
+ \sigma_{XY}&=\mathrm{Cov}(X,Y)\\
+ &=\mathrm E[(X-\mathrm E(X))(Y-\mathrm E(Y))]\\
+ &=\mathrm E(XY)-\mathrm E(X)\mathrm E(Y).
+ \end{aligned}
+\]
+\[
+ \rho_{XY}=\frac{\mathrm{Cov}(X,Y)}{\sigma_X\sigma_Y}
+ =\frac{\sigma_{XY}}{\sqrt{\mathrm{Var}(X)\mathrm{Var}(Y)}}.
+\]
+\[
+ r_{xy}=\frac{s_{xy}}{s_xs_y}
+ =\frac{S_{xy}}{\sqrt{S_{xx}S_{yy}}}
+ =\frac{\sum_{i=1}^{n}(x_i-\bar x)(y_i-\bar y)}
+ {\sqrt{\sum_{i=1}^{n}(x_i-\bar x)^2\sum_{i=1}^{n}(y_i-\bar y)^2}}.
+\]
+
+\end{multicols*}
+\end{document}
+
+% Đối chiếu nguồn (không in):
+% [x] Ước lượng không chệch, bias, MSE, hiệu quả, tiêu chuẩn chọn MSE.
+% [x] Tính vững, mômen, Chebyshev, likelihood, sai số khoảng tin cậy.
+% [x] Hàm năng lực, năng lực tại theta_1, mức ý nghĩa.
+% [x] Ba bảng kiểm định một mẫu: kỳ vọng biết/không biết phương sai, tỷ lệ.
+% [x] Ba trường hợp so sánh hai kỳ vọng; mẫu phụ thuộc; hai tỷ lệ.
+% [x] Toàn bộ tổng bình phương, ước lượng, khoảng tin cậy và kiểm định hồi quy.
+% [x] Hiệp phương sai, tương quan tổng thể và hệ số tương quan mẫu.
