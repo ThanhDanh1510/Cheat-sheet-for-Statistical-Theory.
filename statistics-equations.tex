@@ -318,7 +318,20 @@ với $df=n+m-2$.
 \]
 Miền bác bỏ tương tự trường hợp phương sai bằng nhau với $df$ tính bằng công thức trên.
 
-\sect{5. Hồi quy tuyến tính}
+\sect{5. So sánh hai tỷ lệ}
+\[
+ Z_0=\frac{\hat p_1-\hat p_2-D_0}
+ {\sqrt{\hat p(1-\hat p)\left(\dfrac1n+\dfrac1m\right)}},
+\]
+với $\hat p_1=\frac Xn$, $\hat p_2=\frac Ym$, và $\hat p=\frac{X+Y}{n+m}$.
+\tighttable{\begin{tabularx}{\linewidth}{|Y|Y|}\hline
+\textbf{Đối thuyết}&\textbf{Miền bác bỏ}\\\hline
+\altrow{p_1-p_2\ne D_0}{|z_0|>z_{1-\alpha/2}}
+\altrow{p_1-p_2<D_0}{z_0<-z_{1-\alpha}}
+\altrow{p_1-p_2>D_0}{z_0>z_{1-\alpha}}
+\end{tabularx}}
+
+\sect{6. Hồi quy tuyến tính}
 \[
  \begin{aligned}
  S_{xx}&=\sum_{i=1}^{n}(x_i-\bar x)^2
@@ -384,7 +397,7 @@ Miền bác bỏ tương tự trường hợp phương sai bằng nhau với $df
 \altrow{\beta_1>b_1}{t_{\beta_1}>t^{n-2}_{1-\alpha}}
 \end{tabularx}}
 
-\sect{6. Hiệp phương sai và tương quan}
+\sect{7. Hiệp phương sai và tương quan}
 \[
  \begin{aligned}
  \sigma_{XY}&=\mathrm{Cov}(X,Y)\\
