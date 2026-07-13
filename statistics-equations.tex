@@ -193,6 +193,11 @@ MSE cho phép ta chọn $\hat\theta$ nếu, với cỡ mẫu $n$,
 \[
  L(\theta) = L(\theta \mid X_1, \ldots, X_n) = \prod_{i=1}^{n}f(X_i\mid\theta).
 \]
+Hàm hợp lý mẫu $X_1,\dots,X_n$ của một số PP phổ biến: \\
+\textbullet\ Bernoulli($p$): $L(p) = p^{\sum X_i}(1-p)^{n-\sum X_i}$ \\
+\textbullet\ Poisson($\lambda$): $L(\lambda) = e^{-n\lambda}\lambda^{\sum X_i}/\prod X_i!$ \\
+\textbullet\ Chuẩn $N(\mu,\sigma^2)$ (biết $\sigma^2$): $L(\mu) \propto \exp\left(-\frac{\sum(X_i-\mu)^2}{2\sigma^2}\right)$ \\
+\textbullet\ Mũ Exp($\lambda$): $L(\lambda) = \lambda^n e^{-\lambda\sum X_i}$
 
 \sect{2. Khoảng tin cậy}
 \textbf{Sai số ước lượng $\epsilon$:}
@@ -339,19 +344,11 @@ với $\hat p_1=\frac Xn$, $\hat p_2=\frac Ym$, và $\hat p=\frac{X+Y}{n+m}$.
   S_{xy}&=\sum(x_i-\bar x)(y_i-\bar y) =\sum x_iy_i-\frac{(\sum x_i)(\sum y_i)}{n}.
   \end{aligned}
 \]
-\[
- \begin{aligned}
- SST&=S_{yy}=\sum_{i=1}^{n}(y_i-\bar y)^2,\\
- SSR&=\hat\beta_1^2S_{xx}=\frac{S_{xy}^2}{S_{xx}},\\
- SSE&=SST-SSR=\sum_{i=1}^{n}(y_i-\hat y_i)^2,\\
- R^2&=\frac{SSR}{SST}=1-\frac{SSE}{SST},\\
- MSE&=\sigma_{est}^2=\frac{SSE}{n-2}.
- \end{aligned}
-\]
-\[
- \hat\beta_1=\frac{S_{xy}}{S_{xx}},
- \qquad \hat\beta_0=\bar y-\hat\beta_1\bar x.
-\]
+\tighttable{\begin{tabular}{c|c}
+$SSR = \hat\beta_1^2 S_{xx} = \frac{S_{xy}^2}{S_{xx}}$ & $R^2 = \frac{SSR}{SST} = 1 - \frac{SSE}{SST}$ \\[2.5pt]
+$SSE = SST - SSR = \sum(y_i-\hat y_i)^2$ & $MSE = \sigma_{est}^2 = \frac{SSE}{n-2}$ \\[2.5pt]
+$\hat\beta_1 = \frac{S_{xy}}{S_{xx}}$ & $\hat\beta_0 = \bar y - \hat\beta_1 \bar x$
+\end{tabular}}
 
 \subsect{Khoảng tin cậy}
 \[
