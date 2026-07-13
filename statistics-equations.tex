@@ -333,14 +333,11 @@ với $\hat p_1=\frac Xn$, $\hat p_2=\frac Ym$, và $\hat p=\frac{X+Y}{n+m}$.
 
 \sect{6. Hồi quy tuyến tính}
 \[
- \begin{aligned}
- S_{xx}&=\sum_{i=1}^{n}(x_i-\bar x)^2
-       =\sum_{i=1}^{n}x_i^2-n\bar x^2,\\
- S_{yy}&=\sum_{i=1}^{n}(y_i-\bar y)^2
-       =\sum_{i=1}^{n}y_i^2-n\bar y^2,\\
- S_{xy}=S_{yx}&=\sum_{i=1}^{n}(x_i-\bar x)(y_i-\bar y)
-       =\sum_{i=1}^{n}x_iy_i-n\bar x\bar y.
- \end{aligned}
+  \begin{aligned}
+  S_{xx}&=\sum(x_i-\bar x)^2 =\sum x_i^2-\frac{(\sum x_i)^2}{n},\\
+  S_{yy}&=SST=\sum(y_i-\bar y)^2 =\sum y_i^2-\frac{(\sum y_i)^2}{n},\\
+  S_{xy}&=\sum(x_i-\bar x)(y_i-\bar y) =\sum x_iy_i-\frac{(\sum x_i)(\sum y_i)}{n}.
+  \end{aligned}
 \]
 \[
  \begin{aligned}
