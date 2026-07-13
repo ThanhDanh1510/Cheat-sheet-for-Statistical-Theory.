@@ -193,10 +193,11 @@ MSE cho phép ta chọn $\hat\theta$ nếu, với cỡ mẫu $n$,
 \[
  L(\theta) = L(\theta \mid X_1, \ldots, X_n) = \prod_{i=1}^{n}f(X_i\mid\theta).
 \]
-Hàm hợp lý mẫu $X_1,\dots,X_n$ của một số PP phổ biến: \\
-\textbullet\ Bernoulli($p$): $L(p) = p^{\sum X_i}(1-p)^{n-\sum X_i}$ \\
-\textbullet\ Poisson($\lambda$): $L(\lambda) = e^{-n\lambda}\lambda^{\sum X_i}/\prod X_i!$ \\
-\textbullet\ Chuẩn $N(\mu,\sigma^2)$ (biết $\sigma^2$): $L(\mu) \propto \exp\left(-\frac{\sum(X_i-\mu)^2}{2\sigma^2}\right)$ \\
+Hàm hợp lý mẫu $X_1,\dots,X_n$ của một số PP phổ biến: \\[2.5pt]
+\textbullet\ Bernoulli($p$): $L(p) = p^{\sum X_i}(1-p)^{n-\sum X_i}$ \\[2.5pt]
+\textbullet\ Nhị thức $B(k,p)$: $L(p) = \left(\prod\binom{k}{X_i}\right) p^{\sum X_i}(1-p)^{nk-\sum X_i}$ \\[2.5pt]
+\textbullet\ Poisson($\lambda$): $L(\lambda) = \frac{e^{-n\lambda}\lambda^{\sum X_i}}{\prod X_i!}$ \\[2.5pt]
+\textbullet\ Chuẩn $N(\mu,\sigma^2)$: $L(\mu,\sigma^2) = (2\pi\sigma^2)^{-n/2}\exp\left(-\frac{\sum(X_i-\mu)^2}{2\sigma^2}\right)$ \\[2.5pt]
 \textbullet\ Mũ Exp($\lambda$): $L(\lambda) = \lambda^n e^{-\lambda\sum X_i}$
 
 \sect{2. Khoảng tin cậy}
