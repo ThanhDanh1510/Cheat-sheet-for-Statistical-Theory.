@@ -421,6 +421,16 @@ với $\hat p_1=\frac Xn$, $\hat p_2=\frac Ym$, và $\hat p=\frac{X+Y}{n+m}$.
 \]
 Bác bỏ $H_0$ nếu $|t_0|>t^{n-2}_{1-\alpha/2}$ (với $H_1:\rho_{XY}\ne 0$).
 
+\sect{8. Kiểm định tính độc lập (Chi bình phương)}
+Bảng ngẫu nhiên $r \times s$. Tần số thực nghiệm $n_{ij}$, tổng hàng $n_i$, tổng cột $m_j$, cỡ mẫu $N$. \\
+Tần số lý thuyết: $e_{ij} = \frac{n_i m_j}{N}$ (điều kiện $e_{ij} \geq 5$). \\
+Giả thuyết $H_0$: Hai đặc tính độc lập. \\
+Thống kê kiểm định:
+\[
+ Q^2 = \sum_{i=1}^{r}\sum_{j=1}^{s} \frac{(n_{ij}-e_{ij})^2}{e_{ij}} = \sum_{i=1}^{r}\sum_{j=1}^{s} \frac{n_{ij}^2}{e_{ij}} - N.
+\]
+Bác bỏ $H_0$ nếu $Q^2 > \chi^2_{(r-1)(s-1)}(\alpha)$ (với mức ý nghĩa $\alpha$).
+
 \end{multicols*}
 \end{document}
 
