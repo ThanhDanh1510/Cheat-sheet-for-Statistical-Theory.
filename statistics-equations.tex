@@ -426,10 +426,10 @@ d) Với $n=1$, tìm $k$ để mức ý nghĩa $\alpha = 0.05$. \\
 e) Chứng minh $C$ là UMP test kiểm định $H_0:\theta=1$ vs $H_1:\theta>1$. \\
 \textbf{Giải:} \\
 \textbf{c)} Theo bổ đề Neyman-Pearson, miền bác bỏ tối ưu có dạng: \\
-$\displaystyle C = \left\{ (x_1, \ldots, x_n) : \frac{L(x_1, \ldots, x_n; \theta=1)}{L(x_1, \ldots, x_n; \theta=2)} \le c \right\} = \left\{ \frac{\prod e^{-x_i}}{\prod \frac{1}{2} e^{-x_i/2}} \le c \right\} = \left\{ \frac{e^{-\sum x_i}}{2^{-n} e^{-\sum x_i/2}} \le c \right\}$ \\
-$\displaystyle \Leftrightarrow e^{-\sum x_i} \le c 2^{-n} e^{-\sum x_i/2} \Leftrightarrow \ln\left(e^{-\sum x_i}\right) \le \ln\left(c 2^{-n} e^{-\sum x_i/2}\right)$ \\
-$\displaystyle \Leftrightarrow -\sum x_i \le \ln(c 2^{-n}) - \frac{1}{2}\sum x_i \Leftrightarrow \frac{1}{2}\sum x_i \ge - \ln c + n\ln 2 \Leftrightarrow \sum x_i \ge -2\ln c + 2n\ln 2$ \\
-$\displaystyle \Leftrightarrow \frac{1}{n}\sum x_i \ge -\frac{2}{n}\ln c + 2\ln 2$. Đặt $k = -\frac{2}{n}\ln c + 2\ln 2 \Rightarrow C = \{ \overline X \ge k \} = \{ \hat\Theta_{\text{MLE}} \ge k \}$. \\
+$\displaystyle C = \left\{ (x_1, x_2, \ldots, x_n) : \frac{L(x_1, \dots, x_n; \theta=1)}{L(x_1, \dots, x_n; \theta=2)} \le c \right\} = \left\{ \frac{\prod_{i=1}^n e^{-x_i}}{\prod_{i=1}^n \frac{1}{2} e^{-x_i/2}} \le c \right\} = \left\{ \frac{e^{-\sum_{i=1}^n x_i}}{\frac{1}{2^n} e^{-\sum_{i=1}^n x_i/2}} \le c \right\}$ \\
+$\displaystyle \Leftrightarrow e^{-\sum_{i=1}^n x_i} \le c \frac{1}{2^n} e^{-\sum_{i=1}^n x_i/2} \Leftrightarrow \ln\left(e^{-\sum_{i=1}^n x_i}\right) \le \ln\left(\frac{c}{2^n} e^{-\sum_{i=1}^n x_i/2}\right)$ \\
+$\displaystyle \Leftrightarrow -\sum_{i=1}^n x_i \le \ln\left(\frac{c}{2^n}\right) - \frac{1}{2}\sum_{i=1}^n x_i \Leftrightarrow \frac{1}{2}\sum_{i=1}^n x_i \ge -\ln(c) + n\ln 2 \Leftrightarrow \sum_{i=1}^n x_i \ge -2\ln(c) + 2n\ln 2$ \\
+$\displaystyle \Leftrightarrow \frac{1}{n}\sum_{i=1}^n x_i \ge -\frac{2}{n}\ln(c) + 2\ln 2$. Đặt $k = -\frac{2}{n}\ln(c) + 2\ln 2 \Rightarrow C = \left\{ (X_1, \ldots, X_n) : \hat\Theta_{\text{MLE}} \ge k \right\}$. \\
 \textbf{d)} Với $n=1 \Rightarrow \hat\Theta_{\text{MLE}} = X_1$. Ta cần $\alpha = P(X_1 \ge k \mid \theta=1) = 0.05$ \\
 $\displaystyle \Leftrightarrow \int_k^\infty e^{-x} dx = \lim_{t\to+\infty}[-e^{-x}]_k^t = e^{-k} = 0.05 \Rightarrow k = -\ln(0.05) \approx 2.996$. \\
 \textbf{e)} Với đối thuyết $H_1:\theta = \theta' > 1$. Theo bổ đề NP, miền bác bỏ tối ưu có dạng với $k_0>0$: \\
