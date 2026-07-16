@@ -425,15 +425,13 @@ Thống kê kiểm định:
 \]
 Bác bỏ $H_0$ nếu $Q^2 > \chi^2_{(r-1)(s-1)}(\alpha)$ (với mức ý nghĩa $\alpha$).
 
-\sect{9. Ví dụ lý thuyết (Bài 3: Phân phối Mũ)}
-Cho mẫu ngẫu nhiên $X_1,\dots,X_n \sim \text{Exp}(\theta)$ với $f(x;\theta) = \frac{1}{\theta} e^{-x/\theta}$ ($x,\theta > 0$). \\
-\textbf{a) Tìm $\hat\Theta_{\text{MLE}}$:} $L(\theta) = \theta^{-n} \exp(-\sum X_i/\theta) \Rightarrow \ln L = -n\ln\theta - \frac{\sum X_i}{\theta}$. \\
-$\frac{d\ln L}{d\theta} = -\frac{n}{\theta} + \frac{\sum X_i}{\theta^2} = 0 \Rightarrow \hat\Theta_{\text{MLE}} = \overline X$. \\
-\textbf{b) Chứng minh không chệch:} $\mathrm E(\hat\Theta_{\text{MLE}}) = \frac{1}{n}\sum \mathrm E(X_i) = \theta$ (do $\mathrm E(X_i)=\theta$) $\Rightarrow \text{Bias} = 0$. \\
+\sect{9. Ví dụ miền bác bỏ (Bài 3: PP Mũ)}
+Cho mẫu ngẫu nhiên $X_1,\dots,X_n \sim \text{Exp}(\theta)$ với $f(x;\theta) = \frac{1}{\theta} e^{-x/\theta}$ ($x,\theta > 0$), và $\hat\Theta_{\text{MLE}} = \overline X$. \\
 \textbf{c) NP test $H_0:\theta=1$ vs $H_1:\theta=2$:} Miền bác bỏ tối ưu:
 $C = \left\{x : \frac{L(x;1)}{L(x;2)} \leq c\right\} = \left\{x : \frac{e^{-\sum X_i}}{2^{-n} e^{-\sum X_i/2}} \leq c\right\} \Rightarrow \overline X \geq k$. \\
 \textbf{d) Tìm $k$ với $n=1, \alpha=0.05$:} $P(X_1 \geq k \mid \theta=1) = e^{-k} = 0.05 \Rightarrow k = -\ln(0.05) \approx 2.996$. \\
 \textbf{e) UMP test $H_0:\theta=1$ vs $H_1:\theta > 1$:} Miền bác bỏ NP với $\theta'>1$ phụ thuộc $\theta'$ qua $k' = \frac{\ln k/n - \ln\theta'}{1/\theta' - 1}$. Vì dạng miền bác bỏ $\overline X \geq k'$ giữ nguyên với mọi $\theta'>1$, đây cũng là miền bác bỏ tối ưu đều (UMP).
+
 
 \end{multicols*}
 \end{document}
