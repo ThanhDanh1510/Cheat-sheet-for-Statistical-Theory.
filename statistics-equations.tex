@@ -426,18 +426,23 @@ Thống kê kiểm định:
 Bác bỏ $H_0$ nếu $Q^2 > \chi^2_{(r-1)(s-1)}(\alpha)$ (với mức ý nghĩa $\alpha$).
 
 \sect{9. Ví dụ miền bác bỏ (Bài 3: PP Mũ)}
-\textbf{Đề:} Cho mẫu ngẫu nhiên $X_1,\dots,X_n \sim \text{Exp}(\theta)$ có $f(x;\theta)=\frac{1}{\theta} e^{-x/\theta}$ ($x,\theta > 0$). Giả sử đã biết $\hat\Theta_{\text{MLE}} = \overline X$.
-c) Chứng minh miền bác bỏ tối ưu kiểm định $H_0:\theta=1$ vs $H_1:\theta=2$ là $C=\{\overline X \ge k\}$.
-d) Với $n=1$, tìm $k$ để mức ý nghĩa $\alpha = 0.05$.
+\textbf{Đề:} Cho mẫu ngẫu nhiên $X_1,\dots,X_n \sim \text{Exp}(\theta)$ có $f(x;\theta)=\frac{1}{\theta} e^{-x/\theta}$ ($x,\theta > 0$). Giả sử đã biết $\hat\Theta_{\text{MLE}} = \overline X$. \\
+c) Chứng minh miền bác bỏ tối ưu kiểm định $H_0:\theta=1$ vs $H_1:\theta=2$ là $C=\{\overline X \ge k\}$. \\
+d) Với $n=1$, tìm $k$ để mức ý nghĩa $\alpha = 0.05$. \\
 e) Chứng minh $C$ là UMP test kiểm định $H_0:\theta=1$ vs $H_1:\theta>1$. \\
-\textbf{Giải:}
-\textbf{c)} Theo bổ đề Neyman-Pearson, miền bác bỏ tối ưu có dạng:
-$\frac{L(x; 1)}{L(x; 2)} \le c \Leftrightarrow \frac{e^{-\sum x_i}}{2^{-n} e^{-\sum x_i/2}} \le c \Leftrightarrow e^{-\sum x_i} \le c 2^{-n} e^{-\sum x_i/2} \Leftrightarrow -\sum x_i \le \ln(c 2^{-n}) - \frac{1}{2}\sum x_i \Leftrightarrow \frac{1}{2}\sum x_i \ge n\ln 2 - \ln c \Leftrightarrow \sum x_i \ge 2n\ln 2 - 2\ln c \Leftrightarrow \overline X \ge -\frac{2}{n}\ln c + 2\ln 2 = k$.
-Vậy $C = \{\overline X \ge k\} = \{\hat\Theta_{\text{MLE}} \ge k\}$. \\
-\textbf{d)} Với $n=1 \Rightarrow \hat\Theta_{\text{MLE}} = X_1$. Ta cần $\alpha = P(X_1 \ge k \mid \theta=1) = 0.05 \Leftrightarrow \int_k^\infty e^{-x} dx = \lim_{t\to\infty}[-e^{-x}]_k^t = e^{-k} = 0.05 \Leftrightarrow k = -\ln(0.05) \approx 2.996$. \\
-\textbf{e)} Với đối thuyết $H_1:\theta = \theta' > 1$, miền bác bỏ tối ưu theo bổ đề NP có dạng:
-$\frac{L(x;1)}{L(x;\theta')} \le k_0 \Leftrightarrow \frac{e^{-\sum x_i}}{(\theta')^{-n} e^{-\sum x_i/\theta'}} \le k_0 \Leftrightarrow (\theta')^n e^{\sum x_i (\frac{1}{\theta'} - 1)} \le k_0 \Leftrightarrow n\ln\theta' + (\frac{1}{\theta'} - 1)\sum x_i \le \ln k_0 \Leftrightarrow \ln\theta' + (\frac{1}{\theta'} - 1)\overline X \le \frac{\ln k_0}{n}$.
-Vì $\theta' > 1 \Rightarrow \frac{1}{\theta'} - 1 < 0 \Rightarrow \overline X \ge \frac{\ln k_0/n - \ln\theta'}{1/\theta' - 1} = k'$. Do miền bác bỏ tối ưu luôn có dạng $\overline X \ge k'$ với mọi $\theta' > 1$, nên $C = \{\overline X \ge k'\}$ là miền bác bỏ tối ưu đều (UMP) để kiểm định $H_0:\theta=1$ vs $H_1:\theta > 1$.
+\textbf{Giải:} \\
+\textbf{c)} Theo bổ đề Neyman-Pearson, miền bác bỏ tối ưu có dạng: \\
+$\displaystyle C = \left\{ (x_1, \ldots, x_n) : \frac{L(x_1, \ldots, x_n; \theta=1)}{L(x_1, \ldots, x_n; \theta=2)} \le c \right\} = \left\{ \frac{\prod e^{-x_i}}{\prod \frac{1}{2} e^{-x_i/2}} \le c \right\} = \left\{ \frac{e^{-\sum x_i}}{2^{-n} e^{-\sum x_i/2}} \le c \right\}$ \\
+$\displaystyle \Leftrightarrow e^{-\sum x_i} \le c 2^{-n} e^{-\sum x_i/2} \Leftrightarrow \ln\left(e^{-\sum x_i}\right) \le \ln\left(c 2^{-n} e^{-\sum x_i/2}\right)$ \\
+$\displaystyle \Leftrightarrow -\sum x_i \le \ln(c 2^{-n}) - \frac{1}{2}\sum x_i \Leftrightarrow \frac{1}{2}\sum x_i \ge - \ln c + n\ln 2 \Leftrightarrow \sum x_i \ge -2\ln c + 2n\ln 2$ \\
+$\displaystyle \Leftrightarrow \frac{1}{n}\sum x_i \ge -\frac{2}{n}\ln c + 2\ln 2$. Đặt $k = -\frac{2}{n}\ln c + 2\ln 2 \Rightarrow C = \{ \overline X \ge k \} = \{ \hat\Theta_{\text{MLE}} \ge k \}$. \\
+\textbf{d)} Với $n=1 \Rightarrow \hat\Theta_{\text{MLE}} = X_1$. Ta cần $\alpha = P(X_1 \ge k \mid \theta=1) = 0.05$ \\
+$\displaystyle \Leftrightarrow \int_k^\infty e^{-x} dx = \lim_{t\to+\infty}[-e^{-x}]_k^t = e^{-k} = 0.05 \Rightarrow k = -\ln(0.05) \approx 2.996$. \\
+\textbf{e)} Với đối thuyết $H_1:\theta = \theta' > 1$. Theo bổ đề NP, miền bác bỏ tối ưu có dạng với $k_0>0$: \\
+$\displaystyle \frac{L(x_1, \ldots, x_n; \theta=1)}{L(x_1, \ldots, x_n; \theta=\theta')} \le k_0 \Leftrightarrow \frac{\prod e^{-x_i}}{\prod \frac{1}{\theta'} e^{-x_i/\theta'}} \le k_0 \Leftrightarrow \frac{e^{-\sum x_i}}{(\theta')^{-n} e^{-\sum x_i/\theta'}} \le k_0 \Leftrightarrow (\theta')^n e^{\sum x_i (-1 + 1/\theta')} \le k_0$ \\
+$\displaystyle \Leftrightarrow n\ln\theta' + \sum x_i (-1 + 1/\theta') \le \ln k_0 \Leftrightarrow \ln\theta' + \frac{1}{n}\sum x_i \left(\frac{1}{\theta'} - 1\right) \le \frac{\ln k_0}{n} \Leftrightarrow \ln\theta' + \left(\frac{1}{\theta'} - 1\right)\overline X \le \frac{\ln k_0}{n}$. \\
+Vì $\theta' > 1 \Rightarrow \left(\frac{1}{\theta'} - 1\right) < 0 \Rightarrow \overline X \ge \frac{\ln k_0/n - \ln\theta'}{1/\theta' - 1} = k' \Rightarrow C = \{ \overline X \ge k' \}$. Do dạng miền bác bỏ tối ưu luôn là $\overline X \ge k'$ với mọi $\theta' > 1$, nên đây là miền bác bỏ tối ưu đều (UMP) để kiểm định $H_0:\theta=1$ vs $H_1:\theta > 1$.
+
 
 
 \end{multicols*}
